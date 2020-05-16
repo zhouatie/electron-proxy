@@ -1,31 +1,49 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="app-header">
+      <we-header></we-header>
     </div>
-    <router-view/>
+    <div class="app-content">
+      <div class="app-sidebar">
+        <we-sidebar></we-sidebar>
+      </div>
+      <div class="app-main">
+        <router-view />
+      </div>
+    </div>
   </div>
 </template>
+<script>
+import weSidebar from './components/layout/sidebar';
+import weHeader from './components/layout/header';
 
-<style lang="less">
+export default {
+  components: {
+    weSidebar,
+    weHeader
+  },
+  mounted() {
+    console.log(this.$store, 'store');
+  }
+};
+</script>
+
+<style lang="less" scoped>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .app-content {
+    flex: 1;
+    display: flex;
+    .app-sidebar {
+      width: 200px;
+      height: 100%;
+    }
+    .app-main {
+      flex: 1;
+      height: 100%;
     }
   }
 }
