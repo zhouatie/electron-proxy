@@ -5,16 +5,16 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import '@/style/index.less';
 import store from '@/store';
+import { setupElectron, setupIpcRenderer } from './setup';
 // import './socket.js';
 
-const { ipcRenderer } = require('electron');
+Vue.use(setupElectron);
+Vue.use(setupIpcRenderer);
 
-Vue.use(ElementUI);
-Vue.config.productionTip = false;
-
-ipcRenderer.on('info', (a, b) => {
-  console.log(a, b, 'ab');
+Vue.use(ElementUI, {
+  size: 'small'
 });
+Vue.config.productionTip = false;
 
 new Vue({
   store,

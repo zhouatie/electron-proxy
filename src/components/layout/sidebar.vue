@@ -41,8 +41,16 @@
         <span slot="title">请求监测</span>
       </el-menu-item>
       <el-menu-item :route="{ name: 'rules' }" index="2">
-        <i class="el-icon-s-data"></i>
+        <i class="el-icon-edit-outline"></i>
         <span slot="title">拦截规则</span>
+      </el-menu-item>
+      <el-menu-item :route="{ name: 'host' }" index="3">
+        <i class="el-icon-document"></i>
+        <span slot="title">HOST管理</span>
+      </el-menu-item>
+      <el-menu-item :route="{ name: 'mock' }" index="4">
+        <i class="el-icon-s-operation"></i>
+        <span slot="title">MOCK</span>
       </el-menu-item>
     </el-menu>
   </div>
@@ -55,8 +63,8 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -68,7 +76,7 @@ export default {
   box-sizing: border-box;
   .sidebar-menu {
     .is-active {
-      background: #fff!important;
+      background: #fff !important;
     }
   }
 }

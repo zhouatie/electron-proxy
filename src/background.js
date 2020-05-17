@@ -5,7 +5,7 @@ import {
   createProtocol
   /* installVueDevtools */
 } from 'vue-cli-plugin-electron-builder/lib';
-// import remoteApi from './main-api';
+import Api from './core/main-api';
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -38,6 +38,8 @@ function createWindow() {
     // Load the index.html when not in development
     win.loadURL('app://./index.html');
   }
+  // 挂载api方法
+  win.api = new Api(win);
 
   win.on('closed', () => {
     win = null;

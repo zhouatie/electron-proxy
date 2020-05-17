@@ -2,6 +2,8 @@ const http = require('http');
 const net = require('net');
 // const url = require('url');
 
+let cb = null;
+
 function request(cReq, cRes) {
   console.log('request');
   const u = new URL(cReq.url);
@@ -18,6 +20,7 @@ function request(cReq, cRes) {
     .request(options, function(pRes) {
       cRes.writeHead(pRes.statusCode, pRes.headers);
       pRes.pipe(cRes);
+      cb(cReq, pRes);
     })
     .on('error', function(e) {
       cRes.end();
@@ -29,7 +32,7 @@ function request(cReq, cRes) {
 function connect(cReq, cSock) {
   cSock.on('error', (err) => {
     if (err) {
-      console.log('csock error');
+      console.log(err, 'csock error');
     }
   });
 
@@ -40,6 +43,7 @@ function connect(cReq, cSock) {
     .connect(u.port, u.hostname, function() {
       cSock.write('HTTP/1.1 200 Connection Established\r\n\r\n');
       pSock.pipe(cSock);
+      cb(cReq, pSock);
     })
     .on('error', function(e) {
       cSock.end();
@@ -54,10 +58,10 @@ function connect(cReq, cSock) {
 //   .on('connect', connect)
 //   .listen(8001, '0.0.0.0');
 
-export default function setup(server) {
-  if (!server) server = http.createServer();
-  server
+export default function setup(callback) {
+  if (callback) cb = callback;
+  return http.createServer()
     .on('request', request)
     .on('connect', connect)
     .listen(8001, '0.0.0.0');
-};
+}

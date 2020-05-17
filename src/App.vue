@@ -32,10 +32,8 @@ export default {
 #app {
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
   .app-content {
-    flex: 1;
+    height: calc(~'100% - 56px');
     display: flex;
     .app-sidebar {
       width: 200px;
@@ -44,6 +42,7 @@ export default {
     .app-main {
       flex: 1;
       height: 100%;
+      overflow: auto;
     }
   }
 }

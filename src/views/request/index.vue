@@ -1,11 +1,14 @@
 <template>
   <div class="page-request">
+    <div class="request-header">
+      <el-button type="primary" icon="el-icon-delete" @click="handleClear">Clear</el-button>
+    </div>
     <div class="request-content">
       <el-table size="mini" :data="requests" border style="width: 100%">
         <el-table-column type="index" width="50"> </el-table-column>
         <el-table-column prop="req.method" label="方法" width="180"> </el-table-column>
         <el-table-column prop="url" label="url">
-          <template slot-scope="scope"> {{ scope.row.req.header.host }}{{ scope.row.req.url }} </template>
+          <template slot-scope="scope"> {{ scope.row.req.url }} </template>
         </el-table-column>
         <el-table-column label="操作" width="180">
           <template slot-scope="scope">
@@ -24,10 +27,10 @@
         </div>
         <div>
           <span>url: </span>
-          <span>{{ get(detail, 'req.header.host', '') + get(detail, 'req.url', '') }}</span>
+          <span>{{ get(detail, 'req.url', '') }}</span>
         </div>
         <div>
-          <div v-for="item in Object.entries(get(detail, 'req.header', {}))" :key="item[0]">
+          <div v-for="item in Object.entries(get(detail, 'req.headers', {}))" :key="item[0]">
             <span>{{ item[0] }}: </span>
             <span>{{ item[1] }}</span>
           </div>
@@ -65,6 +68,9 @@ export default {
     },
     handleAddRule(item) {
       console.log(item);
+    },
+    handleClear() {
+      this.$store.commit('clear');
     }
     // 发送信息给服务端
     // this.$socket.emit('login', {
@@ -82,8 +88,12 @@ export default {
 <style lang="less">
 .page-request {
   height: 100%;
+  overflow: auto;
   padding: 16px;
   box-sizing: border-box;
+  .request-header {
+    margin-bottom: 16px;
+  }
   .request-drawer {
     .el-drawer__body {
       padding: 0 20px;

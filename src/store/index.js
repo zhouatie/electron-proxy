@@ -5,15 +5,14 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    socketStatus: false,
     requests: []
   },
   mutations: {
-    setSocketStatus(state, payload) {
-      state.socketStatus = payload;
-    },
     addRequest(state, payload) {
       state.requests.unshift(payload);
+    },
+    clear(state) {
+      state.requests = [];
     }
   }
 });
