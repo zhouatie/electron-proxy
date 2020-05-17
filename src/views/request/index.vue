@@ -66,13 +66,13 @@ export default {
     handleAddRule(item) {
       console.log(item);
     }
-    //发送信息给服务端
+    // 发送信息给服务端
     // this.$socket.emit('login', {
     //   username: 'username',
     //   password: 'password',
     // });
     // console.log(this, 'this')
-    //接收服务端的信息
+    // 接收服务端的信息
     // this.sockets.subscribe('relogin', (data) => {
     //   console.log(data, 'relogin');
     // });

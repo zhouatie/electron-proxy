@@ -10,23 +10,23 @@ const routes = [
   {
     path: '/request',
     name: 'request',
-    component: Request,
+    component: Request
   },
   {
     path: '/rules',
     name: 'rules',
-    component: Rules,
+    component: Rules
   },
   {
     path: '*',
-    redirect: '/request',
-  },
+    redirect: '/request'
+  }
 ];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes,
+  routes
 });
 
 export default router;

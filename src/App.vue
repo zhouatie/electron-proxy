@@ -23,7 +23,7 @@ export default {
     weHeader
   },
   mounted() {
-    console.log(this.$store, 'store');
+    console.log(this, 'store');
   }
 };
 </script>
