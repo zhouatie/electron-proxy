@@ -36,7 +36,6 @@ class Api {
 
   close() {
     server.close();
-    server = null;
   }
 }
 

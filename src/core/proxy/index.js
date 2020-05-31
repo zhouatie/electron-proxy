@@ -50,9 +50,13 @@ function connect(cReq, cSock) {
 
 export default function setup(callback) {
   if (callback) cb = callback;
-  return http
-    .createServer()
+  const server = http.createServer();
+  server
     .on('request', request)
     .on('connect', connect)
+    .on('close', () => {
+      console.log('============= close ===================');
+    })
     .listen(8001, '0.0.0.0');
+  return server;
 }

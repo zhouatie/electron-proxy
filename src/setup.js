@@ -34,10 +34,11 @@ class IpcRenderer {
 
 export const setupIpcRenderer = {
   install: (Vue) => {
+    const ipcRender = new IpcRenderer();
     Object.defineProperties(Vue.prototype, {
       $ipcRenderer: {
         get() {
-          return new IpcRenderer();
+          return ipcRender;
         }
       }
     });
