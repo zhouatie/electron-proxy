@@ -21,7 +21,7 @@ class Api {
 
   startProxy() {
     console.log(this.win, 'this is startProxy');
-    server = setupProxy((req, res) => {
+    server = server || setupProxy((req, res) => {
       console.log('tart send');
       this.win.webContents.send('update-request-list', { req, res });
     });
@@ -36,6 +36,7 @@ class Api {
 
   close() {
     server.close();
+    server = null;
   }
 }
 

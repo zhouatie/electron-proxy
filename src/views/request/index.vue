@@ -97,6 +97,7 @@ export default {
   .request-drawer {
     .el-drawer__body {
       padding: 0 20px;
+      overflow: auto;
     }
     .request-detail {
       overflow: auto;
