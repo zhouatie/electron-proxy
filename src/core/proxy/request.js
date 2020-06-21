@@ -202,7 +202,7 @@ function createRequest(recorder) {
           requestDetail.requestOptions.hostname = filterObj.toHost;
         }
       })
-      .then(async () => {
+      .then(async function() {
         const remoteResponse = await fetchRemoteResponse(
           requestDetail.protocol,
           requestDetail.requestOptions,
