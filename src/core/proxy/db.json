@@ -1,0 +1,8 @@
+{
+  "hosts": [
+    {
+      "fromHost": "www.abc.com",
+      "toHost": "127.0.0.1"
+    }
+  ]
+}

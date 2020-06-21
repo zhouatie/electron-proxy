@@ -7,6 +7,11 @@ const store = new Vuex.Store({
   state: {
     requests: []
   },
+  getters: {
+    getRequests(state) {
+      return state.requests.slice(0, 20);
+    }
+  },
   mutations: {
     addRequest(state, payload) {
       state.requests.unshift(payload);

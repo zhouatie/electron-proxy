@@ -52,6 +52,14 @@
         <i class="el-icon-s-operation"></i>
         <span slot="title">MOCK</span>
       </el-menu-item>
+      <el-menu-item :route="{ name: 'prod' }" index="5">
+        <i class="el-icon-s-operation"></i>
+        <span slot="title">线上调试</span>
+      </el-menu-item>
+      <el-menu-item :route="{ name: 'check' }" index="6">
+        <i class="el-icon-s-operation"></i>
+        <span slot="title">字段校验</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>

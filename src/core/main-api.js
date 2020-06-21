@@ -1,4 +1,5 @@
-import setupProxy from './proxy';
+import setupProxy from './proxy/setup.js';
+const Recorder = require('./proxy/recorder.js');
 const { ipcMain } = require('electron');
 
 let server = null;
@@ -6,7 +7,9 @@ let server = null;
 class Api {
   constructor(win) {
     this.win = win;
-
+    this.recorder = new Recorder((info) => {
+      this.win.webContents.send('update-request-list', info);
+    });
     this.init();
   }
 
@@ -20,11 +23,7 @@ class Api {
   }
 
   startProxy() {
-    console.log(this.win, 'this is startProxy');
-    server = server || setupProxy((req, res) => {
-      console.log('tart send');
-      this.win.webContents.send('update-request-list', { req, res });
-    });
+    server = server || setupProxy(this.recorder);
   }
 
   stopProxy() {

@@ -12,7 +12,7 @@ Vue.use(setupElectron);
 Vue.use(setupIpcRenderer);
 
 Vue.use(ElementUI, {
-  size: 'small'
+  size: 'mini'
 });
 Vue.config.productionTip = false;
 

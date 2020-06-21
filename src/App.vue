@@ -43,6 +43,7 @@ export default {
       flex: 1;
       height: 100%;
       overflow: auto;
+      background: #fff;
     }
   }
 }

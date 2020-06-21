@@ -1,0 +1,8 @@
+{
+  "hosts": [
+    {
+      "fromHost": "wwww.baidu2.com",
+      "toHost": "127.0.0.1"
+    }
+  ]
+}

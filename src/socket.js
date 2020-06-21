@@ -7,7 +7,7 @@ socket.on('connect', () => {
   console.log('client => connect');
   store.commit('setSocketStatus', true);
 });
-socket.on('request', (data) => {
+socket.on('update', (data) => {
   console.log('event', data);
   store.commit('addRequest', data);
 });
